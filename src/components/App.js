@@ -13,10 +13,12 @@ const App = () => {
   const onEduHandler = ()=>{
     setUrlType("education");
     createInfo();
+    setActivity("")
   }
   const onRecHandler = ()=>{
     setUrlType("recreational");
-    createInfo(); 
+    createInfo();
+    setActivity("")
   }
   async function createInfo(){
     const getInfo = await fetch(makeURL(urlType));
