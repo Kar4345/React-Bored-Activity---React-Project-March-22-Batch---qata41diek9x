@@ -5,30 +5,28 @@ const Loader = () => <div id="loader">Loading...</div>
 
 
 const App = () => {
-  const [urlType,setUrlType] = useState("education");
   const [activity,setActivity] = useState("");
 
   const makeURL = (type) => `http://www.boredapi.com/api/activity?type=${type}`;
 
   const onEduHandler = ()=>{
-    setUrlType("education");
-    createInfo();
+    createInfo("education");
     setActivity("")
   }
   const onRecHandler = ()=>{
-    setUrlType("recreational");
-    createInfo();
+    
+    createInfo("recreational");
     setActivity("")
   }
-  async function createInfo(){
-    const getInfo = await fetch(makeURL(urlType));
+  async function createInfo(type){
+    const getInfo = await fetch(makeURL(type));
     const data = await getInfo.json();
     setActivity(data.activity);
     console.log(data.activity)
   }
   
   useEffect(()=>{
-    createInfo();
+    createInfo("education");
   },[])
 
   return (
