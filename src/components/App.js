@@ -12,11 +12,9 @@ const App = () => {
 
   const onEduHandler = ()=>{
     setUrlType("education");
-    
   }
   const onRecHandler = ()=>{
-    setUrlType("recreational");
-    
+    setUrlType("recreational"); 
   }
   async function createInfo(){
     const getInfo = await fetch(makeURL(urlType));
@@ -31,7 +29,7 @@ const App = () => {
 
   return (
     <div id="main">
-      <div id='activity'>{activity===""?Loader():activity}</div>
+      {activity?<div id='activity'>{activity}</div>:Loader()}
       <button id='btn-education' onClick={onEduHandler}>Education</button>
       <button id='btn-recreation' onClick={onRecHandler}>Recreation</button>
     </div>
