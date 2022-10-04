@@ -12,9 +12,11 @@ const App = () => {
 
   const onEduHandler = ()=>{
     setUrlType("education");
+    createInfo();
   }
   const onRecHandler = ()=>{
-    setUrlType("recreational"); 
+    setUrlType("recreational");
+    createInfo(); 
   }
   async function createInfo(){
     const getInfo = await fetch(makeURL(urlType));
@@ -25,7 +27,7 @@ const App = () => {
   
   useEffect(()=>{
     createInfo();
-  },[urlType])
+  },[])
 
   return (
     <div id="main">
